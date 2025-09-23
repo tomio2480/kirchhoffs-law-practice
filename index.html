@@ -74,7 +74,7 @@
             diagramDiv.innerHTML = `
                 <svg width="600" height="350" viewBox="0 0 600 350">
                     <style>
-                        .loop-path { fill: none; stroke: blue; stroke-width: 2; }
+                        .loop-path { fill: none; stroke: blue; stroke-width: 2; stroke-dasharray: 5,5; }
                         .loop-arrow { fill: none; stroke: blue; stroke-width: 2; marker-end: url(#blue-arrowhead); }
                         .loop-text { fill: blue; font-size: 16px; font-weight: bold; }
                     </style>
@@ -128,14 +128,12 @@
                         <text x="115" y="210" font-size="18" fill="red">I₃</text>
                         <line x1="100" y1="190" x2="100" y2="200" stroke="red" stroke-width="2" marker-end="url(#red-arrowhead)"/>
                     </g>
-
+                    
                     <path d="M150,75 L300,75 L300,225 L150,225 Z" class="loop-path" />
-                    <polyline points="200,80 200,80" marker-end="url(#blue-arrowhead)" class="loop-arrow" />
-                    <text x="180" y="125" class="loop-text">閉回路1</text>
+                    <text x="210" y="125" class="loop-text">閉回路1</text>
                     
                     <path d="M300,75 L450,75 L450,225 L300,225 Z" class="loop-path" />
-                    <polyline points="350,80 350,80" marker-end="url(#blue-arrowhead)" class="loop-arrow" />
-                    <text x="330" y="125" class="loop-text">閉回路2</text>
+                    <text x="360" y="125" class="loop-text">閉回路2</text>
                 </svg>
             `;
 
