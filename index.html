@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>キルヒホッフの法則 練習問題</title>
+    <style>
+        body { font-family: sans-serif; margin: 2em; }
+        .container { max-width: 800px; margin: auto; }
+        .input-group { margin-bottom: 2em; }
+        .input-row { display: flex; justify-content: space-around; }
+        .input-row div { margin: 0 1em; }
+        #circuit-diagram { border: 1px solid #ccc; padding: 1em; text-align: center; }
+        #circuit-diagram svg { max-width: 100%; height: auto; }
+        #solution { margin-top: 2em; }
+        pre { background-color: #f4f4f4; padding: 1em; border-radius: 5px; }
+        .circuit-element { font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>キルヒホッフの法則 練習問題</h1>
+        <p>電源電圧 (E) と抵抗値 (R) を入力して、各抵抗を流れる電流を求めましょう。</p>
+        
+        <div class="input-group">
+            <div class="input-row">
+                <div>
+                    <label for="e1">E₁ (V):</label>
+                    <input type="number" id="e1" value="10">
+                </div>
+                <div>
+                    <label for="e2">E₂ (V):</label>
+                    <input type="number" id="e2" value="15">
+                </div>
+                <div>
+                    <label for="e3">E₃ (V):</label>
+                    <input type="number" id="e3" value="20">
+                </div>
+            </div>
+            <div class="input-row">
+                <div>
+                    <label for="r1">R₁ (Ω):</label>
+                    <input type="number" id="r1" value="2">
+                </div>
+                <div>
+                    <label for="r2">R₂ (Ω):</label>
+                    <input type="number" id="r2" value="3">
+                </div>
+                <div>
+                    <label for="r3">R₃ (Ω):</label>
+                    <input type="number" id="r3" value="4">
+                </div>
+            </div>
+            <button onclick="calculateAndDraw()">計算と作図</button>
+        </div>
+
+        <div id="circuit-diagram">
+            </div>
+
+        <div id="solution">
+            </div>
+    </div>
+
+    <script>
+        function calculateAndDraw() {
+            const e1 = parseFloat(document.getElementById('e1').value);
+            const e2 = parseFloat(document.getElementById('e2').value);
+            const e3 = parseFloat(document.getElementById('e3').value);
+            const r1 = parseFloat(document.getElementById('r1').value);
+            const r2 = parseFloat(document.getElementById('r2').value);
+            const r3 = parseFloat(document.getElementById('r3').value);
+
+            // 回路図のSVGを生成
+            const diagramDiv = document.getElementById('circuit-diagram');
+            diagramDiv.innerHTML = `
+                <svg width="600" height="300" viewBox="0 0 600 300">
+                    <text x="100" y="20" font-size="16">E₁ = ${e1}V</text>
+                    <text x="100" y="100" font-size="16">R₁ = ${r1}Ω</text>
+                    <text x="100" y="140" font-size="16">I₁</text>
+                    <polyline points="50,50 50,150 150,150 150,50 50,50" fill="none" stroke="black" stroke-width="2" />
+                    <line x1="100" y1="50" x2="100" y2="70" stroke="black" stroke-width="2" />
+                    <line x1="90" y1="60" x2="110" y2="60" stroke="black" stroke-width="2" />
+                    <rect x="75" y="80" width="50" height="20" stroke="black" fill="none" stroke-width="2" />
+                    <circle cx="100" cy="140" r="5" fill="none" stroke="black" stroke-width="2" />
+
+                    <text x="300" y="20" font-size="16">E₂ = ${e2}V</text>
+                    <text x="300" y="100" font-size="16">R₂ = ${r2}Ω</text>
+                    <text x="300" y="140" font-size="16">I₂</text>
+                    <polyline points="250,50 250,150 350,150 350,50 250,50" fill="none" stroke="black" stroke-width="2" />
+                    <line x1="300" y1="50" x2="300" y2="70" stroke="black" stroke-width="2" />
+                    <line x1="290" y1="60" x2="310" y2="60" stroke="black" stroke-width="2" />
+                    <rect x="275" y="80" width="50" height="20" stroke="black" fill="none" stroke-width="2" />
+                    <circle cx="300" cy="140" r="5" fill="none" stroke="black" stroke-width="2" />
+
+                    <text x="500" y="20" font-size="16">E₃ = ${e3}V</text>
+                    <text x="500" y="100" font-size="16">R₃ = ${r3}Ω</text>
+                    <text x="500" y="140" font-size="16">I₃</text>
+                    <polyline points="450,50 450,150 550,150 550,50 450,50" fill="none" stroke="black" stroke-width="2" />
+                    <line x1="500" y1="50" x2="500" y2="70" stroke="black" stroke-width="2" />
+                    <line x1="490" y1="60" x2="510" y2="60" stroke="black" stroke-width="2" />
+                    <rect x="475" y="80" width="50" height="20" stroke="black" fill="none" stroke-width="2" />
+                    <circle cx="500" cy="140" r="5" fill="none" stroke="black" stroke-width="2" />
+                    
+                    <line x1="50" y1="50" x2="550" y2="50" stroke="black" stroke-width="2" />
+                    <line x1="50" y1="150" x2="550" y2="150" stroke="black" stroke-width="2" />
+                </svg>
+            `;
+
+            // JavaScriptで計算を実行
+            let i1 = e1 / r1;
+            let i2 = e2 / r2;
+            let i3 = e3 / r3;
+
+            // 無限大のチェックと丸め処理
+            i1 = isFinite(i1) ? i1.toFixed(2) : 'Infinity';
+            i2 = isFinite(i2) ? i2.toFixed(2) : 'Infinity';
+            i3 = isFinite(i3) ? i3.toFixed(2) : 'Infinity';
+
+            const solutionDiv = document.getElementById('solution');
+            solutionDiv.innerHTML = `
+                <h2>解答</h2>
+                <pre>
+                    I₁ = E₁ / R₁ = ${e1}V / ${r1}Ω = ${i1}A
+                    I₂ = E₂ / R₂ = ${e2}V / ${r2}Ω = ${i2}A
+                    I₃ = E₃ / R₃ = ${e3}V / ${r3}Ω = ${i3}A
+                </pre>
+            `;
+        }
+    </script>
+</body>
+</html>
