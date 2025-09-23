@@ -74,35 +74,51 @@
             const diagramDiv = document.getElementById('circuit-diagram');
             diagramDiv.innerHTML = `
                 <svg width="600" height="300" viewBox="0 0 600 300">
-                    <text x="100" y="20" font-size="16">E₁ = ${e1}V</text>
-                    <text x="100" y="100" font-size="16">R₁ = ${r1}Ω</text>
-                    <text x="100" y="140" font-size="16">I₁</text>
-                    <polyline points="50,50 50,150 150,150 150,50 50,50" fill="none" stroke="black" stroke-width="2" />
-                    <line x1="100" y1="50" x2="100" y2="70" stroke="black" stroke-width="2" />
-                    <line x1="90" y1="60" x2="110" y2="60" stroke="black" stroke-width="2" />
-                    <rect x="75" y="80" width="50" height="20" stroke="black" fill="none" stroke-width="2" />
-                    <circle cx="100" cy="140" r="5" fill="none" stroke="black" stroke-width="2" />
+                    <g transform="translate(0,0)">
+                        <line x1="50" y1="50" x2="50" y2="70" stroke="black" stroke-width="2" />
+                        <line x1="45" y1="60" x2="55" y2="60" stroke="black" stroke-width="2" /> <line x1="48" y1="65" x2="52" y2="65" stroke="black" stroke-width="2" /> <text x="60" y="60" font-size="14">E₁ = ${e1}V</text>
+                        
+                        <polyline points="50,70 50,90 40,95 60,105 40,115 60,125 50,130 50,150" fill="none" stroke="black" stroke-width="2" />
+                        <text x="60" y="100" font-size="14">R₁ = ${r1}Ω</text>
 
-                    <text x="300" y="20" font-size="16">E₂ = ${e2}V</text>
-                    <text x="300" y="100" font-size="16">R₂ = ${r2}Ω</text>
-                    <text x="300" y="140" font-size="16">I₂</text>
-                    <polyline points="250,50 250,150 350,150 350,50 250,50" fill="none" stroke="black" stroke-width="2" />
-                    <line x1="300" y1="50" x2="300" y2="70" stroke="black" stroke-width="2" />
-                    <line x1="290" y1="60" x2="310" y2="60" stroke="black" stroke-width="2" />
-                    <rect x="275" y="80" width="50" height="20" stroke="black" fill="none" stroke-width="2" />
-                    <circle cx="300" cy="140" r="5" fill="none" stroke="black" stroke-width="2" />
+                        <line x1="75" y1="110" x2="75" y2="150" stroke="red" stroke-width="2" marker-end="url(#arrowhead)"/>
+                        <text x="85" y="125" fill="red" font-size="14">I₁</text>
+                    </g>
 
-                    <text x="500" y="20" font-size="16">E₃ = ${e3}V</text>
-                    <text x="500" y="100" font-size="16">R₃ = ${r3}Ω</text>
-                    <text x="500" y="140" font-size="16">I₃</text>
-                    <polyline points="450,50 450,150 550,150 550,50 450,50" fill="none" stroke="black" stroke-width="2" />
-                    <line x1="500" y1="50" x2="500" y2="70" stroke="black" stroke-width="2" />
-                    <line x1="490" y1="60" x2="510" y2="60" stroke="black" stroke-width="2" />
-                    <rect x="475" y="80" width="50" height="20" stroke="black" fill="none" stroke-width="2" />
-                    <circle cx="500" cy="140" r="5" fill="none" stroke="black" stroke-width="2" />
+                    <g transform="translate(200,0)">
+                        <line x1="50" y1="50" x2="50" y2="70" stroke="black" stroke-width="2" />
+                        <line x1="45" y1="60" x2="55" y2="60" stroke="black" stroke-width="2" />
+                        <line x1="48" y1="65" x2="52" y2="65" stroke="black" stroke-width="2" />
+                        <text x="60" y="60" font-size="14">E₂ = ${e2}V</text>
+
+                        <polyline points="50,70 50,90 40,95 60,105 40,115 60,125 50,130 50,150" fill="none" stroke="black" stroke-width="2" />
+                        <text x="60" y="100" font-size="14">R₂ = ${r2}Ω</text>
+
+                        <line x1="75" y1="110" x2="75" y2="150" stroke="red" stroke-width="2" marker-end="url(#arrowhead)"/>
+                        <text x="85" y="125" fill="red" font-size="14">I₂</text>
+                    </g>
+
+                    <g transform="translate(400,0)">
+                        <line x1="50" y1="50" x2="50" y2="70" stroke="black" stroke-width="2" />
+                        <line x1="45" y1="60" x2="55" y2="60" stroke="black" stroke-width="2" />
+                        <line x1="48" y1="65" x2="52" y2="65" stroke="black" stroke-width="2" />
+                        <text x="60" y="60" font-size="14">E₃ = ${e3}V</text>
+
+                        <polyline points="50,70 50,90 40,95 60,105 40,115 60,125 50,130 50,150" fill="none" stroke="black" stroke-width="2" />
+                        <text x="60" y="100" font-size="14">R₃ = ${r3}Ω</text>
+
+                        <line x1="75" y1="110" x2="75" y2="150" stroke="red" stroke-width="2" marker-end="url(#arrowhead)"/>
+                        <text x="85" y="125" fill="red" font-size="14">I₃</text>
+                    </g>
                     
-                    <line x1="50" y1="50" x2="550" y2="50" stroke="black" stroke-width="2" />
-                    <line x1="50" y1="150" x2="550" y2="150" stroke="black" stroke-width="2" />
+                    <line x1="50" y1="50" x2="450" y2="50" stroke="black" stroke-width="2" />
+                    <line x1="50" y1="150" x2="450" y2="150" stroke="black" stroke-width="2" />
+
+                    <defs>
+                        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+                            <polygon points="0 0, 10 3.5, 0 7" fill="red" />
+                        </marker>
+                    </defs>
                 </svg>
             `;
 
